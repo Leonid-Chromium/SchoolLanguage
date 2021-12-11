@@ -68,15 +68,23 @@ namespace Language.UCs
 
             Label labelID = new Label();
             labelID.Content = ID;
+            labelID.FontSize = 16;
+            labelID.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelFirstName = new Label();
             labelFirstName.Content = FirstName;
+            labelFirstName.FontSize = 16;
+            labelFirstName.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelLastName = new Label();
             labelLastName.Content = LastName;
+            labelLastName.FontSize = 16;
+            labelLastName.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelPatronymic = new Label();
             labelPatronymic.Content = Patronymic;
+            labelPatronymic.FontSize = 16;
+            labelPatronymic.FontFamily = new FontFamily("Comic Sans MS");
 
             DatePicker datePickerBirthday = new DatePicker();
             datePickerBirthday.SelectedDate = Birthday;
@@ -86,15 +94,23 @@ namespace Language.UCs
 
             Label labelEmail = new Label();
             labelEmail.Content = Email;
+            labelEmail.FontSize = 16;
+            labelEmail.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelPhone = new Label();
             labelPhone.Content = Phone;
+            labelPhone.FontSize = 16;
+            labelPhone.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelGenderCode = new Label();
             labelGenderCode.Content = GenderCode;
+            labelGenderCode.FontSize = 16;
+            labelGenderCode.FontFamily = new FontFamily("Comic Sans MS");
 
             Label labelPhotoPath = new Label();
             labelPhotoPath.Content = PhotoPath;
+            labelPhotoPath.FontSize = 16;
+            labelPhotoPath.FontFamily = new FontFamily("Comic Sans MS");
 
             StackPanel stackPanelClient = new StackPanel();
             stackPanelClient.Orientation = Orientation.Horizontal;

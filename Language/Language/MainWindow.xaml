@@ -7,7 +7,7 @@
         xmlns:localUC="clr-namespace:Language.UCs"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="1050"
-        MaxWidth="1050">
+        MinWidth="1050">
     <Grid x:Name="mainGrid">
         <StackPanel x:Name="mainMenuSP" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="ClientB" Content="Клиент"

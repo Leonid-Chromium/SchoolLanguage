@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Language.UCs.MainMenuUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Language.UCs"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel x:Name="mainMenuSP" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="ClientB" Content="Клиент"
+                    Height="30" Width="100"
+                    FontSize="16" FontFamily="Comic Sans MS"
+                    Click="ClientB_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

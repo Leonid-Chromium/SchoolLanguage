@@ -19,3 +19,5 @@ D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\Language.pdb
 D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\UCs\ClientsUC.g.cs
 D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\UCs\ClientsUC.baml
 D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\UCs\MainMenuUC.g.cs
+D:\File\GitHub\SchoolLanguage\Language\Language\obj\Debug\UCs\MainMenuUC.baml

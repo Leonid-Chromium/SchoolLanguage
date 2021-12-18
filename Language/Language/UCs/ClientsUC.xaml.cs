@@ -25,13 +25,14 @@ namespace Language.UCs
         public ClientsUC()
         {
             InitializeComponent();
+            clientsDataTable = new DataTable();
+            clientsDataTable.TableName = "clientsDT";
         }
 
-        DataTable clientsDataTable;
+        public static DataTable clientsDataTable;
 
-        public static void formatClientDT(DataTable dataTable1)
+        public static void formatClientDT(DataTable dataTable)
         {
-            DataTable dataTable = new DataTable();
             dataTable.Columns.Add("id", typeof(int));
             dataTable.Columns.Add("First name",typeof(string));
             dataTable.Columns.Add("Last name", typeof(string));
@@ -42,8 +43,6 @@ namespace Language.UCs
             dataTable.Columns.Add("Phone", typeof(string));
             dataTable.Columns.Add("GenderCode", typeof(string));
             dataTable.Columns.Add("PhotoPath", typeof(string));
-
-            dataTable1 = dataTable;
         }
 
         public void newClientInDT(DataTable dataTable, int ID, string FirstName, string LastName, string Patronymic, DateTime Birthday, DateTime RegistrationDate, string Email, string Phone, string GenderCode, string PhotoPath)
@@ -55,6 +54,14 @@ namespace Language.UCs
         {
             Trace.WriteLine("");
             Trace.WriteLine("Общая информация");
+            try
+            {
+                Trace.WriteLine(dataTable.TableName);
+            }
+            catch
+            {
+                Trace.WriteLine("Имени нет");
+            }
             Trace.WriteLine(String.Format("x = " + dataTable.Columns.Count));
             Trace.WriteLine(String.Format("y = " + dataTable.Rows.Count));
 
@@ -152,11 +159,62 @@ namespace Language.UCs
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            clientsDataTable = Class.SQLClass.SQLDT("SELECT ID, FirstName, LastName, Patronymic, Birthday, RegistrationDate, Email, Phone, GenderCode, PhotoPath FROM Client");
-            //formatClientDT(clientsDataTable);
-            //newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
-            //newClientInDT(clientsDataTable, 7, "Алла", "Мироновна", "Ермакова", new DateTime(1976, 01, 22), new DateTime(2017, 02, 09, 00, 00, 00, 000), "whimsy@aol.com", "7(060)437-13-73", "ж", @"Клиенты\48.jpg");
-            //newClientInDT(clientsDataTable, 8, "Глеб", "Максимович", "Селиверстов", new DateTime(1999, 06, 20), new DateTime(2016, 01, 07, 00, 00, 00, 000), "jigsaw@sbcglobal.net", "7(200)554-28-68", "м", @"Клиенты\m37.jpg");
+            //clientsDataTable = Class.SQLClass.SQLDT("SELECT ID, FirstName, LastName, Patronymic, Birthday, RegistrationDate, Email, Phone, GenderCode, PhotoPath FROM Client");
+            formatClientDT(clientsDataTable);
+            DTtoTrace(clientsDataTable);
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 7, "Алла", "Мироновна", "Ермакова", new DateTime(1976, 01, 22), new DateTime(2017, 02, 09, 00, 00, 00, 000), "whimsy@aol.com", "7(060)437-13-73", "ж", @"Клиенты\48.jpg");
+            newClientInDT(clientsDataTable, 8, "Глеб", "Максимович", "Селиверстов", new DateTime(1999, 06, 20), new DateTime(2016, 01, 07, 00, 00, 00, 000), "jigsaw@sbcglobal.net", "7(200)554-28-68", "м", @"Клиенты\m37.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
+            newClientInDT(clientsDataTable, 5, "Иосиф", "Голубев", "Тимофеевич", new DateTime(1982, 05, 06), new DateTime(2018, 08, 18, 00, 00, 00, 000), "smcnabb@att.net", "7(78)972-73-11 ", "м", @"Клиенты\m18.jpg");
             DTtoTrace(clientsDataTable);
             updateNowPagination();
             for(int i = 0; i < clientsDataTable.Rows.Count; i++)
@@ -243,6 +301,12 @@ namespace Language.UCs
             {
                 Trace.WriteLine(ex.Message);
             }
+        }
+
+        private void clientsBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
+            mainWindow.ChangeUC(MainWindow.getPastUC());
         }
     }
 }

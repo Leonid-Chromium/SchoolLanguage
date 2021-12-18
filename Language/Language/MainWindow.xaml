@@ -9,12 +9,7 @@
         Title="MainWindow" Height="450" Width="1050"
         MinWidth="1050">
     <Grid x:Name="mainGrid">
-        <StackPanel x:Name="mainMenuSP" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="ClientB" Content="Клиент"
-                    Height="30" Width="100"
-                    FontSize="16" FontFamily="Comic Sans MS"
-                    Click="ClientB_Click"/>
-        </StackPanel>
+        <localUC:MainMenuUC x:Name="Menu" Visibility="Visible"/>
         <localUC:ClientsUC x:Name="Clients" Visibility="Collapsed"/>
     </Grid>
 </Window>

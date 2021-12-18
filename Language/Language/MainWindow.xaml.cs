@@ -27,18 +27,27 @@ namespace Language
         public MainWindow()
         {
             InitializeComponent();
+            actualUC = Menu;
+            pastUC.Push(actualUC);
         }
 
-        public static void ChangeUC(UserControl newUC)
+        public void ChangeUC(UserControl newUC)
         {
-            if (newUC == actualUC)
-                newUC.Visibility = Visibility.Collapsed;
-            else
+            if (actualUC == null)
             {
-                actualUC.Visibility = Visibility.Collapsed;
+                Menu.Visibility = Visibility.Collapsed;
                 newUC.Visibility = Visibility.Visible;
             }
-
+            else
+            {
+                if (newUC == actualUC)
+                    newUC.Visibility = Visibility.Collapsed;
+                else
+                {
+                    actualUC.Visibility = Visibility.Collapsed;
+                    newUC.Visibility = Visibility.Visible;
+                }
+            }
             if (pastUC.Peek() == newUC)
                 pastUC.Pop();
             else
@@ -47,10 +56,9 @@ namespace Language
             actualUC = newUC;
         }
 
-        public void MyChangeUC(UserControl newUC)
+        public static UserControl getPastUC()
         {
-            mainMenuSP.Visibility = Visibility.Collapsed;
-            newUC.Visibility = Visibility.Visible;
+            return pastUC.Peek();
         }
 
         public static void CheckStack()
@@ -69,7 +77,7 @@ namespace Language
 
         private void ClientB_Click(object sender, RoutedEventArgs e)
         {
-            MyChangeUC(Clients);
+            ChangeUC(Clients);
         }
     }
 }
